@@ -18,7 +18,7 @@ async function runCommand(command, msg, lang, owners, ...args) {
  */
 const fu = async (msg, lang, prefix, owners, ...args) => {
   if (msg.author.bot || msg.system) return
-  const [cmd] = msg.content.replace(/\s{1,}/gm, ' ').split(' ')
+  const [cmd] = msg.content.replace(prefix, '').replace(/\s{1,}/gm, ' ').split(' ')
   if (commands[cmd]) await runCommand(commands[cmd], msg, lang, owners, ...args)
 }
 
