@@ -1,0 +1,23 @@
+{
+  "name": "bot-framework",
+  "version": "1.0.0",
+  "description": "Acrylic Style's bot framework powered by Discord.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/acrylic-style/bot-framework.git"
+  },
+  "author": "acrylic-style",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/acrylic-style/bot-framework/issues"
+  },
+  "homepage": "https://github.com/acrylic-style/bot-framework#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "emojilib": "^2.4.0"
+  }
+}
