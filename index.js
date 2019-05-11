@@ -1,8 +1,8 @@
-const Command = require(__dirname + '/src/structures/Command')
-const Resolver = require(__dirname + '/src/structures/Resolver')
+const Command = require('./src/structures/Command')
+const Resolver = require('./src/structures/Resolver')
 
-const dispatcher = require(__dirname + '/src/dispatcher')
-const commands = require(__dirname + '/src/commands')
+const dispatcher = require('./src/dispatcher')
+const commands = require('./src/commands')
 
 module.exports = {
   Command,
