@@ -1,11 +1,12 @@
 const fs = require('fs')
 const commands = {}
 
+if (!fs.existsSync('./commands')) fs.mkdirSync('./commands')
+if (!fs.existsSync('./commands/eval.js')) {
+  fs.writeFileSync('./commands/eval.js', fs.readFileSync(`${__dirname}/commands/eval.js`))
+}
 const files = fs.readdirSync('./commands/')
 function setCommand(file, reload) {
-  if (!fs.existsSync('./commands/eval.js')) {
-    fs.writeFileSync('./commands/eval.js', fs.readFileSync(`${__dirname}/commands/eval.js`))
-  }
   if (reload) delete require.cache[require.resolve(`./commands/${file.replace(/\.\./gm, '')}`)]
   const rawcommand = require(`./commands/${file}`)
   if (typeof rawcommand != 'function') return
