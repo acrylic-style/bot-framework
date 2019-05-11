@@ -48,7 +48,7 @@ class Command {
   async run() {}
 
   async start(msg, lang, cargs, ...args) {
-    if (!this.allowedIn.includes(msg.channel.constructor.name)) return msg.channel.send(require('string-format')(lang.not_allowed_in_here, this.allowedIn.join(', ')))
+    if (!this.allowedIn.includes(msg.channel.constructor.name)) return msg.channel.send(`This command is only available at ${this.allowedIn.join(', ')}.`)
     const sendDeletable = async (...args) => {
       const message = await msg.channel.send(...args)
       message.react(char)
