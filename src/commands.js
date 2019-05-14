@@ -7,6 +7,10 @@ if (!fs.existsSync('./commands/eval.js'))
 if (!fs.existsSync('./commands/version.js'))
   fs.writeFileSync('./commands/version.js', fs.readFileSync(`${__dirname}/commands/version.js`))
 
+if (!fs.existsSync('./lang')) fs.mkdirSync('./lang')
+if (!fs.existsSync('./lang/en.json'))
+  fs.writeFileSync('./lang/en.json', fs.readFileSync(`${__dirname}/lang/en.json`))
+
 const commandsdir = require('path').resolve('./commands/')+'/'
 const files = fs.readdirSync(commandsdir)
 function setCommand(file, reload) {

@@ -25,7 +25,7 @@ class Command {
     if (!name) throw new TypeError('You must specify command name.')
     this.name = name
 
-    this.options = Object.assign({
+    this._options = Object.assign({
       alias: [],
       args: [],
       permission: 0,
@@ -34,12 +34,20 @@ class Command {
       enabled: true,
     }, options)
 
-    this.allowedIn = this.options.allowedIn
-    this.enabled = this.options.enabled
-    this.alias = this.options.alias
-    this.args = this.options.args
-    this.requiredOwner = this.options.requiredOwner
-    this.permission = new Permissions(this.options.permission).freeze()
+    this.allowedIn = this._options.allowedIn
+    this.enabled = this._options.enabled
+    this.alias = this._options.alias
+    this.args = this._options.args
+    this.requiredOwner = this._options.requiredOwner
+    this.permission = new Permissions(this._options.permission).freeze()
+  }
+
+  get options() {
+    return this._options
+  }
+
+  set options(val) {
+    throw new Error(`${val} was passed but this property is read-only.`)
   }
 
   /**
@@ -67,18 +75,13 @@ class Command {
    * @param {Discord.Message} msg
    */
   isAllowed(msg, owners) {
-    if (this.requiredOwner) {
-      return owners.includes(msg.author.id)
-    } else if (!msg.guild) {
-      return true
-    } else if (msg.member.hasPermission(this.permission.bitfield)) {
-      return true
-    } else if (owners.includes(msg.author.id)) {
+    if (this.requiredOwner) return owners.includes(msg.author.id)
+    else if (!msg.guild) return true
+    else if (msg.member.hasPermission(this.permission.bitfield)) return true
+    else if (owners.includes(msg.author.id)) {
       msg.channel.send('Note: You\'re bypassing permission because you\'re listed as bot owner.')
       return true
-    } else {
-      return false
-    }
+    } else return false
   }
 }
 
