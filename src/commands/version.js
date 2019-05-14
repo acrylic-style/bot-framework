@@ -1,11 +1,7 @@
 const { Command } = require('bot-framework')
+require('pkginfo')(module, ['version', 'repository', 'name'])
 const fs = require('fs')
-const pkg = fs.existsSync('../package.json')
-  ? require('../package.json')
-  : (
-    fs.existsSync('../../package.json')
-      ? require('../../package.json')
-      : {version: '???', repository: '???'})
+const pkg = module.exports
 const git = require('simple-git/promise')
 
 module.exports = class extends Command {
@@ -15,8 +11,8 @@ module.exports = class extends Command {
 
   async run(msg) {
     const application = await msg.client.fetchApplication()
-    msg.channel.send(`ServerRanker v${pkg.version} @ ${(await git().revparse(['HEAD'])).slice(0, 7)}\n
-     - Source Code: ${pkg.repository}\n
+    msg.channel.send(`${pkg.name} v${pkg.version} @ ${(await git().revparse(['HEAD'])).slice(0, 7)}
+     - Source Code: ${pkg.repository}
      - Bot owner: \`${application.owner.tag}\` (ID: ${application.owner.id})`)
   }
 }

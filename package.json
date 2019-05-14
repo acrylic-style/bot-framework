@@ -20,6 +20,7 @@
     "discord.js": "^11.4.2",
     "emojilib": "^2.4.0",
     "minimist": "^1.2.0",
+    "pkginfo": "^0.4.1",
     "simple-git": "^1.113.0"
   }
 }
