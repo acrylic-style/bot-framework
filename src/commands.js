@@ -2,9 +2,10 @@ const fs = require('fs')
 const commands = {}
 
 if (!fs.existsSync('./commands')) fs.mkdirSync('./commands')
-if (!fs.existsSync('./commands/eval.js')) {
+if (!fs.existsSync('./commands/eval.js'))
   fs.writeFileSync('./commands/eval.js', fs.readFileSync(`${__dirname}/commands/eval.js`))
-}
+  if (!fs.existsSync('./commands/version.js'))
+  fs.writeFileSync('./commands/version.js', fs.readFileSync(`${__dirname}/commands/version.js`))
 
 const commandsdir = require('path').resolve('./commands/')+'/'
 const files = fs.readdirSync(commandsdir)
