@@ -1,7 +1,5 @@
 const { Command } = require('bot-framework')
-require('pkginfo')(module, ['version', 'repository', 'name'])
-const fs = require('fs')
-const pkg = module.exports
+const pkg = { name: '???', version: '???', repository: '???' }
 const git = require('simple-git/promise')
 
 module.exports = class extends Command {
@@ -9,10 +7,11 @@ module.exports = class extends Command {
     super('version')
   }
 
-  async run(msg) {
+  async run(msg, lang, args, sendDeletable) {
     const application = await msg.client.fetchApplication()
-    msg.channel.send(`${pkg.name} v${pkg.version} @ ${(await git().revparse(['HEAD'])).slice(0, 7)}
+    const tag = application.owner.discriminator === '0000' ? '<Owned by Team>' : application.owner.tag
+    sendDeletable(`${pkg.name} v${pkg.version} @ ${(await git().revparse(['HEAD'])).slice(0, 7)}
      - Source Code: ${pkg.repository}
-     - Bot owner: \`${application.owner.tag}\` (ID: ${application.owner.id})`)
+     - Bot owner: \`${tag}\` (ID: ${application.owner.id})`)
   }
 }
