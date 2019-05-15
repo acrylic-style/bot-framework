@@ -1,6 +1,6 @@
 const Discord = require('discord.js') // eslint-disable-line
 const { commands } = require(__dirname + '/commands')
-const { x: { char } } = require('emojilib')
+const { x: { char } } = require('emojilib/emojis')
 const parser = require('minimist')
 
 async function runCommand(command, msg, lang, owners, ...args) {
