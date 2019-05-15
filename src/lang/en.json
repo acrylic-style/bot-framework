@@ -5,6 +5,7 @@
     "version": "Displays version info."
   },
   "no_command": "Sorry, but we couldn't find command by provided name.",
+  "youdonthaveperm": "Seems like you don't have enough permission to do this.",
   "yes": "Yes",
   "no": "No"
 }
