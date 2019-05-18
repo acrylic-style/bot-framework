@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/acrylic-style/bot-framework#readme",
   "dependencies": {
+    "bot-framework": "acrylic-style/bot-framework",
     "discord.js": "^11.4.2",
     "emojilib": "^2.4.0",
     "minimist": "^1.2.0",

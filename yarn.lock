@@ -7,6 +7,15 @@ async-limiter@~1.0.0:
   resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.0.tgz#78faed8c3d074ab81f22b4e985d79e8738f720f8"
   integrity sha512-jp/uFnooOiO+L211eZOoSyzpOITMXx1rBITauYykG3BRYPu8h0UcxsPNB04RR5vo4Tyz3+ay17tR6JVf9qzYWg==
 
+bot-framework@acrylic-style/bot-framework:
+  version "1.0.0"
+  resolved "https://codeload.github.com/acrylic-style/bot-framework/tar.gz/df1fea16d2df562749f245281d899dc50a229d2d"
+  dependencies:
+    discord.js "^11.4.2"
+    emojilib "^2.4.0"
+    minimist "^1.2.0"
+    simple-git "^1.113.0"
+
 debug@^4.0.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
