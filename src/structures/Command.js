@@ -14,9 +14,9 @@ class Command {
    */
 
   /**
-   * Construct this Command Instance.
+   * Initializes this Command Instance.
    *
-   * If not extend this Class, doesn't work your command.
+   * If you don't extend this class, your command will not work.
    * @param {string} name Command name
    * @param {CommandOptions} options options
    * @constructor
@@ -56,7 +56,7 @@ class Command {
   async run() {}
 
   async start(msg, lang, cargs, ...args) {
-    if (!this.allowedIn.includes(msg.channel.constructor.name)) return msg.channel.send(`This command is only available at ${this.allowedIn.join(', ')}.`)
+    if (!this.allowedIn.includes(msg.channel.constructor.name)) return msg.channel.send(`This command is only available in ${this.allowedIn.join(', ')}.`)
     const sendDeletable = async (...args) => {
       const message = await msg.channel.send(...args)
       message.react(char)
