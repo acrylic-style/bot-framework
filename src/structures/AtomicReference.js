@@ -11,7 +11,7 @@ class AtomicReference {
 
   /**
    * Gets value
-   * @returns {any} value
+   * @returns {Promise<any>} value
    */
   async get() {
     return await this._lock.schedule(() => { return this._value })
