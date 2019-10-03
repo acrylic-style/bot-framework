@@ -6,6 +6,8 @@ if (!fs.existsSync('./commands/eval.js'))
   fs.writeFileSync('./commands/eval.js', fs.readFileSync(`${__dirname}/commands/eval.js`))
 if (!fs.existsSync('./commands/version.js'))
   fs.writeFileSync('./commands/version.js', fs.readFileSync(`${__dirname}/commands/version.js`))
+if (!fs.existsSync('./commands/help.js'))
+  fs.writeFileSync('./commands/help.js', fs.readFileSync(`${__dirname}/commands/help.js`))
 
 if (!fs.existsSync('./lang')) fs.mkdirSync('./lang')
 if (!fs.existsSync('./lang/en.json'))
