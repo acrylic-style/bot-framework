@@ -21,7 +21,7 @@ class AtomicReference {
    * Set value to new value
    * @param {any} value
    */
-  set(value = null) {
+  async set(value = null) {
     return await this._lock.schedule(() => { return this._value = value })
   }
 
@@ -29,7 +29,7 @@ class AtomicReference {
    * Increment value then return.
    * @returns {number} number after increment
    */
-  incrementAndReturn() {
+  async incrementAndReturn() {
     return await this._lock.schedule(() => { return ++this._value })
   }
 
@@ -37,7 +37,7 @@ class AtomicReference {
    * Return then increment value.
    * @returns {number} original number before increment
    */
-  returnAndIncrement() {
+  async returnAndIncrement() {
     return await this._lock.schedule(() => { return this._value++ })
   }
 
@@ -45,7 +45,7 @@ class AtomicReference {
    * Decrement value then return.
    * @returns {number} number after decrement
    */
-  decrementAndReturn() {
+  async decrementAndReturn() {
     return await this._lock.schedule(() => { return --this._value })
   }
 
@@ -53,7 +53,7 @@ class AtomicReference {
    * Return then decrement value.
    * @returns {number} original number before decrement
    */
-  returnAndDecrement() {
+  async returnAndDecrement() {
     return await this._lock.schedule(() => { return this._value-- })
   }
 }
