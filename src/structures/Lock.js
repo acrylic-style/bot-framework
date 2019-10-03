@@ -39,7 +39,7 @@ class Lock {
     const promise = new Promise((resolve, reject) => {
       this._promises.push({resolve, reject})
     })
-    if (this._interval !== -1) this.__runInterval()
+    if (this._interval === -1) this.__runInterval()
     return promise
   }
 
