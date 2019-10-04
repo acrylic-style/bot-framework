@@ -21,6 +21,8 @@
     "emojilib": "^2.4.0",
     "eslint": "^6.5.1",
     "minimist": "^1.2.0",
-    "simple-git": "^1.113.0"
-  }
+    "simple-git": "^1.113.0",
+    "typescript-eslint": "^0.0.1-alpha.0"
+  },
+  "types": "typings/index.d.ts"
 }

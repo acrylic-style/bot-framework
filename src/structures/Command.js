@@ -2,25 +2,6 @@ const { Permissions } = require('discord.js')
 const { floppy_disk: { char } } = require('emojilib/emojis')
 
 class Command {
-  /**
-   * Command options
-   * @typedef CommandOptions
-   * @property {Array<string>} alias
-   * @property {Array<string>} args
-   * @property {["TextChannel", "DMChannel", "GroupDMChannel"]} allowedIn
-   * @property {number} permission
-   * @property {boolean} enabled
-   * @property {boolean} requiredOwner
-   */
-
-  /**
-   * Initializes this Command Instance.
-   *
-   * If you don't extend this class, your command will not work.
-   * @param {string} name Command name
-   * @param {CommandOptions} options options
-   * @constructor
-   */
   constructor(name, options = {}) {
     if (!name) throw new TypeError('You must specify command name.')
     this.name = name
@@ -50,9 +31,6 @@ class Command {
     throw new Error(`${val} was passed but this property is read-only.`)
   }
 
-  /**
-   * @abstract
-   */
   async run() {}
 
   async start(msg, lang, cargs, ...args) {
@@ -70,10 +48,6 @@ class Command {
     return await this.run(msg, lang, cargs, sendDeletable, ...args)
   }
 
-  /**
-   * @abstract
-   * @param {Discord.Message} msg
-   */
   isAllowed(msg, owners) {
     if (this.requiredOwner) return owners.includes(msg.author.id)
     else if (!msg.guild) return true

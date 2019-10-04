@@ -1,27 +1,6 @@
 const Discord = require('discord.js')
 
-/**
- * Represents Resolver.
- */
 class Resolver {
-  /**
-   * Data that Resolves to give a User object. This can be:
-   * * A Snowflake
-   * * A User name
-   * * A GuildMember instance
-   * * A User instance
-   * * A ClientUser instance
-   * @typedef {Discord.Snowflake|String|Discord.GuildMember|Discord.User|Discord.ClientUser} UserResolvable
-   */
-
-  /**
-   * Resolves a UserResolvable to a User object.
-   * @example toUser(msg, args[1])
-   * @param {Discord.Message} msg
-   * @param {UserResolvable} user
-   * @param {?Discord.User} fallback The User of fallback
-   * @returns {?Discord.User|?Discord.ClientUser}
-   */
   static toUser(msg, user, fallback) {
     if (user.constructor.name === 'GuildMember') return user.user
     if (user.constructor.name === 'User' || user.constructor.name === 'ClientUser') return user
@@ -32,24 +11,6 @@ class Resolver {
     return null
   }
 
-  /**
-   * Data that resolves to give a Member object. This can be:
-   * * A Snowflake
-   * * A Member name
-   * * A GuildMember instance
-   * * A User instance
-   * * A ClientUser instance
-   * @typedef {Discord.Snowflake|String|Discord.GuildMember|Discord.User|Discord.ClientUser} MemberResolvable
-   */
-
-  /**
-   * Resolves a MemberResolvable to a Member object.
-   * @example toMember(msg, args[1])
-   * @param {Discord.Message} msg
-   * @param {MemberResolvable} member
-   * @param {?Discord.GuildMember} fallback The Member of fallback
-   * @returns {?Discord.GuildMember}
-   */
   static toMember(msg, member, fallback) {
     if (member.constructor.name === 'GuildMember') return member
     if (member.constructor.name === 'User' || member.constructor.name === 'ClientUser') 
@@ -57,26 +18,11 @@ class Resolver {
     if (msg.guild.members.has(member)) return msg.client.members.get(member)
     if (msg.guild.members.find(u => u.username === member)) return msg.client.members.find(u => u.username === member)
     if (msg.mentions.members.size) return msg.mentions.members.first()
+    if (msg.member) return msg.member
     if (fallback) return fallback
     return null
   }
 
-  /**
-   * Data that Resolves to give a Role object. This can be:
-   * * A Snowflake
-   * * A Role name
-   * * A Role instance
-   * @typedef {Discord.Snowflake|String|Discord.Role} RoleResolvable
-   */
-
-  /**
-   * Resolves a RoleResolvable to a Role object.
-   * @example toRole(msg, args[1])
-   * @param {Discord.Message} msg
-   * @param {RoleResolvable} role
-   * @param {?Discord.Role} fallback The Role of fallback.
-   * @returns {?Discord.Role}
-   */
   static toRole(msg, role, fallback) {
     if (role.constructor.name === 'Role') return role
     if (msg.guild.roles.has(role)) return msg.client.roles.get(role)
@@ -86,25 +32,6 @@ class Resolver {
     return null
   }
 
-  /**
-   * Data that Resolves to give a Channel object. This can be:
-   * * A Snowflake
-   * * A Channel name
-   * * A GuildChannel instance
-   * * A TextChannel instance
-   * * A VoiceChannel instance
-   * * A Channel instance
-   * @typedef {Discord.Snowflake|String|Discord.Channel|Discord.GuildChannel|Discord.TextChannel|Discord.VoiceChannel} ChannelResolvable
-   */
-
-  /**
-    * Resolves a ChannelResolvable to a Channel object.
-    * @example toChannel(msg, msg.channel)
-    * @param {Discord.Message} msg
-    * @param {ChannelResolvable} channel
-    * @param {?Discord.Channel} fallback The Channel of fallback
-    * @returns {?Discord.Channel}
-    */
   static toChannel(msg, channel, fallback) {
     if (channel.constructor.name === 'Channel' || channel.constructor.name === 'GuildChannel' || channel.constructor.name === 'TextChannel' || channel.constructor.name === 'VoiceChannel') return channel
     if (msg.guild.channels.has(channel)) return msg.client.channels.get(channel)
