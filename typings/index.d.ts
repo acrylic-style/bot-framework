@@ -225,7 +225,7 @@ declare module 'bot-framework' {
      * Change value to the new value.
      * @param value New value
      */
-    set(value?: T): void
+    set(value?: T): Promise<void>
 
     /**
      * Increment value then return.
