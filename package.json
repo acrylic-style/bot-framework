@@ -1,6 +1,6 @@
 {
   "name": "bot-framework",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Acrylic Style's bot framework powered by Discord.js",
   "main": "index.js",
   "scripts": {
