@@ -5,7 +5,7 @@ const parser = require('minimist')
 async function runCommand(command, msg, lang, owners, ...args) {
   if (!command.enabled) throw new Error(`${command.name} is disabled.`)
   if (!command.isAllowed(msg, owners)) return msg.channel.send(lang.youdonthaveperm)
-  const commandargs = parser(msg.content.split(/\s{1,}/g))
+  const commandargs = parser(msg.content.split(/\s{1,}/g), { string: msg.content.split(/\s{1,}/g) })
   await command.start(msg, lang, commandargs._, ...args)
 }
 
