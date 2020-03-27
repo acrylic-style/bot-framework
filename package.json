@@ -1,6 +1,6 @@
 {
   "name": "bot-framework",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Acrylic Style's bot framework powered by Discord.js",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/acrylic-style/bot-framework#readme",
   "dependencies": {
-    "discord.js": "^11.4.2",
+    "discord.js": "^12.0.2",
     "emojilib": "^2.4.0",
     "eslint": "^6.5.1",
     "minimist": "^1.2.0",

@@ -15,7 +15,7 @@ module.exports = class extends Command {
         const nounderbar = p.replace(/([A-Z].*?)(_(.*?))/g, '$1 ')
         return nounderbar.replace(/\b[A-Z]{2,}\b/g, str => str.toLowerCase())
       }
-      const embed = new Discord.RichEmbed()
+      const embed = new Discord.MessageEmbed()
         .setTitle('About this command')
         .setDescription(
           (lang.commands[args[1]] || ' - Not available information - ')
@@ -29,7 +29,7 @@ module.exports = class extends Command {
         .setColor([0,255,0])
       return sendDeletable(embed)
     }
-    const embed = new Discord.RichEmbed()
+    const embed = new Discord.MessageEmbed()
       .setTitle('List of commands')
       .addField('help', lang['commands']['help'])
       .addField('eval', lang['commands']['eval'])
