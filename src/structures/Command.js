@@ -42,7 +42,7 @@ class Command {
       message.awaitReactions(filter, { time: 10000 })
         .then(collected => {
           if (!collected.size) message.delete()
-          else message.clearReactions().catch(()=>{})
+          else message.reactions.removeAll().catch(()=>{})
         })
     }
     return await this.run(msg, lang, cargs, sendDeletable, ...args)
